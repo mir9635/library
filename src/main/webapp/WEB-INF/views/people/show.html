@@ -5,13 +5,18 @@
     <title>Человек</title>
 </head>
 <body>
-<p th:text="${person.getName()}">VALUE</p>
-<p th:text="${person.getDate()}">VALUE</p>
+    <p th:text="${person.getName()+', '+ person.getDate}">VALUE</p>
 
-<a th:href="@{/people/{person_id}/edit(person_id=${person.getPerson_id()})}">Edit</a>
-
-<form th:method="DELETE" th:action="@{/people/{person_id}(person_id=${person.getPerson_id()})}">
-    <input type="submit" value="DELETE"/>
-</form>
+    <div th:if="${!books.isEmpty} ">
+        <div>Книги:</div>
+        <div th:each="book:${books}" >
+            <div th:text="${book.getName+', '+ book.getAuthor+', ' +book.getRelease_date}"></div>
+        </div>
+    </div>
+    <div th:if="${books.isEmpty}">Человек пока не взял ни одной книги</div>
+    <a th:href="@{/people/{person_id}/edit(person_id=${person.getPerson_id()})}">Редактировать</a>
+    <form th:method="DELETE" th:action="@{/people/{person_id}(person_id=${person.getPerson_id()})}">
+        <input type="submit" value="Удалить"/>
+    </form>
 </body>
 </html>

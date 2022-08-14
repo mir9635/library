@@ -7,8 +7,6 @@ public class Book {
 
     private int book_id;
 
-    private int person_id;
-
     @NotEmpty(message = "Название книги не должно быть пустым")
     private String name;
 
@@ -17,6 +15,9 @@ public class Book {
 
     @Min(value = 1)
     private int release_date;
+
+    public Book() {
+    }
 
     public Book(int book_id, String name, String author, int release_date) {
         this.book_id = book_id;
@@ -31,14 +32,6 @@ public class Book {
 
     public void setBook_id(int book_id) {
         this.book_id = book_id;
-    }
-
-    public int getPerson_id() {
-        return person_id;
-    }
-
-    public void setPerson_id(int person_id) {
-        this.person_id = person_id;
     }
 
     public String getName() {
